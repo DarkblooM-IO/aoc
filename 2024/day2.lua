@@ -1,21 +1,21 @@
 package.path = package.path .. ";../?.lua"
 local utils = require "utils"
 
-function isIncr(tbl)
+local function isIncr(tbl)
   for i = 1, #tbl - 1 do
     if tbl[i] > tbl[i + 1] then return false end
   end
   return true
 end
 
-function isDecr(tbl)
+local function isDecr(tbl)
   for i = 1, #tbl - 1 do
     if tbl[i] < tbl[i + 1] then return false end
   end
   return true
 end
 
-function isReportSafe(report)
+local function isReportSafe(report)
   local safe = true
   for n = 1, #report - 1 do
     local diff = math.abs(report[n] - report[n + 1])
