@@ -25,4 +25,10 @@ utils.split = function (inputstr, sep) -- https://stackoverflow.com/a/7615129
   return t
 end
 
+utils.copyTbl = function (tbl)
+  local t = {}
+  for i,v in ipairs(tbl) do table.insert(t, v) end
+  return t
+end
+
 return utils
