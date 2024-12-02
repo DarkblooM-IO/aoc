@@ -27,8 +27,11 @@ for i,v in ipairs(utils.lines) do
     local diff = math.abs(report[n] - report[n + 1])
     if diff < 1 or diff > 3 then
       safe = false
+      break
     end
   end
 
-  print(v.." -> "..tostring(safe))
+  if safe and (isIncr(report) or isDecr(report)) then result = result + 1 end
 end
+
+print(result)
