@@ -21,11 +21,11 @@ end
 print("Part 1: "..total1)
 
 local total2 = 0
+local mul = true
 
 for _, line in ipairs(utils.lines) do
   local statement = ""
   local nums = {}
-  local mul = true
   local mul_pattern = "mul%((%d+,%d+)%)$"
 
   for chr in string.gmatch(line, ".") do
@@ -37,9 +37,18 @@ for _, line in ipairs(utils.lines) do
       mul = false
     elseif mul and string.match(statement, mul_pattern) then
       local mtch = utils.extractMatches(statement, mul_pattern)
-      print(mtch[#mtch])
       table.insert(nums, utils.split(mtch[#mtch], ","))
     end
+
+    for i = 1, #nums do
+      nums[i][1] = tonumber(nums[i][1])
+      nums[i][2] = tonumber(nums[i][2])
+    end
+
+  end
+
+  for i, _ in ipairs(nums) do
+    total2 = total2 + (nums[i][1] * nums[i][2])
   end
 end
 
