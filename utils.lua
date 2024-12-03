@@ -1,6 +1,6 @@
 local utils = {}
 
-function readFile(file) -- https://stackoverflow.com/a/11204889
+local function readFile(file) -- https://stackoverflow.com/a/11204889
   local lines = {}
   for line in io.lines(file) do lines[#lines + 1] = line end
   return lines
@@ -29,6 +29,12 @@ utils.copyTbl = function (tbl)
   local t = {}
   for i,v in ipairs(tbl) do table.insert(t, v) end
   return t
+end
+
+utils.extractMatches = function (str, pattern)
+  local output = {}
+  for m in string.gmatch(str, pattern) do table.insert(output, m) end
+  return output
 end
 
 return utils
