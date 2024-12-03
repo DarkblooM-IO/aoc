@@ -1,7 +1,8 @@
 package.path = package.path .. ";../?.lua"
 local utils = require "utils"
 
-local total = 0
+local total1 = 0
+local total2 = 0
 
 for _, line in ipairs(utils.lines) do
   local mtch = utils.extractMatches(line, "mul%((%d+,%d+)%)")
@@ -14,8 +15,8 @@ for _, line in ipairs(utils.lines) do
   end
 
   for i, _ in ipairs(nums) do
-    total = total + (nums[i][1] * nums[i][2])
+    total1 = total1 + (nums[i][1] * nums[i][2])
   end
 end
 
-print(total)
+print("Part 1: "..total1)
