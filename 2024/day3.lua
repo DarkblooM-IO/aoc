@@ -26,10 +26,9 @@ for _, line in ipairs(utils.lines) do
   local statement = ""
   local nums = {}
   local mul = true
+  local mul_pattern = "mul%((%d+,%d+)%)$"
 
   for chr in string.gmatch(line, ".") do
-    local mul_pattern = "^.*mul%((%d+,%d+)%)$"
-
     statement = statement..chr
 
     if string.match(statement, "do%(%)$") then
@@ -43,3 +42,5 @@ for _, line in ipairs(utils.lines) do
     end
   end
 end
+
+print("Part 2: "..total2)
