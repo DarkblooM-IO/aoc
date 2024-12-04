@@ -5,14 +5,27 @@ local function xmas(str) return #utils.extractMatches(str, "XMAS") + #utils.extr
 
 local total = 0
 
-for _, line in ipairs(utils.lines) do
+-- horizontal
+for i,v in ipairs(utils.lines) do
+  total = total + xmas(v)
+end
+
+-- vertical
+for i = 1, #utils.lines[1] do
+  local line = ""
+  for k = 1, #utils.lines do line = line..utils.lines[k]:sub(i, i) end
   total = total + xmas(line)
 end
 
-for i = 1, #utils.lines[1] do
-  local vline = ""
-  for k = 1, #utils.lines do vline = vline..string.sub(utils.lines[k], i, i) end
-  total = total + xmas(vline)
-end
+-- diagonal
+local diag = ""
+local anti_diag = ""
+local row = #utils.lines
+local col = #utils.lines[1]
+
+for i = 1, math.min(row, col) do diag = diag..utils.lines[i]:sub(i, i) end
+for i = 1, math.min(row, col) do anti_diag = anti_diag..utils.lines[i]:sub(m - i + 1, m - i + 1) end
+
+-- TODO
 
 print(total)
