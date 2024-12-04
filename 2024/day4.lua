@@ -18,14 +18,6 @@ for i = 1, #utils.lines[1] do
 end
 
 -- diagonal
-local diag = ""
-local anti_diag = ""
-local row = #utils.lines
-local col = #utils.lines[1]
 
-for i = 1, math.min(row, col) do diag = diag..utils.lines[i]:sub(i, i) end
-for i = 1, math.min(row, col) do anti_diag = anti_diag..utils.lines[i]:sub(m - i + 1, m - i + 1) end
-
--- TODO
 
 print(total)
