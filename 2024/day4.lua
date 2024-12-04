@@ -1,15 +1,19 @@
 package.path = package.path .. ";../?.lua"
 local utils = require "utils"
 
+local function xmas(str) return str == "XMAS" or str == "SAMX" end
+
 local total = 0
 
+-- horizontal
 for row = 1, #utils.lines do
   for col = 1, #utils.lines[1] do
     local substr = utils.lines[row]:sub(col, col + 3)
-    if substr == "XMAS" or substr == "SAMX" then total = total + 1 end
+    if xmas(substr) then total = total + 1 end
   end
 end
 
+-- vertical
 for col = 1, #utils.lines[1] do
   for row = 1, #utils.lines do
     local substr = utils.lines[row]:sub(col, col)
@@ -18,8 +22,11 @@ for col = 1, #utils.lines[1] do
       if row + i <= #utils.lines then substr = substr..utils.lines[row + i]:sub(col, col) end
     end
     
-    if substr == "XMAS" or substr == "SAMX" then total = total + 1 end
+    if xmas(substr) then total = total + 1 end
   end
 end
+
+-- diagonal
+
 
 print(total)
