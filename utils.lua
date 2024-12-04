@@ -1,7 +1,5 @@
 local utils = {}
 
-getmetatable('').__index = function(str,i) return string.sub(str,i,i) end -- http://lua-users.org/wiki/StringIndexing
-
 local function readFile(file) -- https://stackoverflow.com/a/11204889
   local lines = {}
   for line in io.lines(file) do lines[#lines + 1] = line end
