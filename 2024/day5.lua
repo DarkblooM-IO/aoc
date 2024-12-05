@@ -1,3 +1,5 @@
+-- this is where i give up o7
+
 package.path = package.path .. ";../?.lua"
 local utils = require "utils"
 
@@ -32,7 +34,6 @@ for _, pages in ipairs(page_updates) do
       else valid = false end
     end
   end
-  if valid then total = total + 1 end
 end
 
-print(total)
+-- print(total)
