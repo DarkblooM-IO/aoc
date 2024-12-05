@@ -37,4 +37,19 @@ utils.extractMatches = function (str, pattern)
   return output
 end
 
+utils.tblEqual = function (tbl1, tbl2)
+  if #tbl1 ~= #tbl2 then return false end
+  for i = 1, #tbl1 do
+    if tbl1[i] ~= tbl2[i] then return false end
+  end
+  return true
+end
+
+utils.tblInTbl = function (tbl1, tbl2)
+  for _, t in ipairs(tbl1) do
+    if utils.tblEqual(t, tbl2) then return true end
+  end
+  return false
+end
+
 return utils
